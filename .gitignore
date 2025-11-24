@@ -1,17 +1,33 @@
-# === ENTORNOS VIRTUALES ===
+# ========================================
+# ENTORNOS VIRTUALES
+# ========================================
 venv/
 env/
 ENV/
+.venv/
+backend/venv/
 
-# === ARCHIVOS DE CONFIGURACIÓN PRIVADA ===
+# ========================================
+# VARIABLES DE ENTORNO (CRÍTICO)
+# ========================================
 *.env
 .env
+.env.local
+.env.production.local
+backend/.env
+frontend/.env
+frontend/.env.local
 
-# === BASES DE DATOS ===
+# ========================================
+# BASE DE DATOS
+# ========================================
 *.sqlite3
 *.db
+db.sqlite3
 
-# === DJANGO ===
+# ========================================
+# DJANGO
+# ========================================
 __pycache__/
 *.py[cod]
 *.log
@@ -20,34 +36,72 @@ __pycache__/
 *.pyo
 *.pyd
 *.mo
-db.sqlite3
+
 media/
 staticfiles/
+backend/staticfiles/
 
-# === NODE / REACT ===
+backend/media/avatars/*
+!backend/media/avatars/.gitkeep
+
+# ========================================
+# LOGS
+# ========================================
+logs/
+*.log
+backend/logs/
+!backend/logs/.gitkeep
+
+# ========================================
+# NODE / REACT
+# ========================================
+node_modules/
 frontend/node_modules/
 frontend/build/
-frontend/.env
 frontend/.next/
+dist/
+build/
 
-# === VSCODE / EDITORES ===
+# ========================================
+# PACKAGE MANAGERS (NPM)
+# ========================================
+package-lock.json
+frontend/package-lock.json
+backend/package-lock.json
+backend/package.json
+
+# ========================================
+# BACKUPS Y TEMPORALES
+# ========================================
+*.bak
+*.tmp
+*~
+backend/backup_data.json
+*_BACKUP_*
+
+# ========================================
+# AWS
+# ========================================
+.elasticbeanstalk/
+app.zip
+*.zip
+
+# ========================================
+# IDEs Y EDITORES
+# ========================================
 .vscode/
 .idea/
 *.swp
+*.swo
+*.swn
 
-# === SISTEMA ===
+# ========================================
+# SISTEMA OPERATIVO
+# ========================================
 .DS_Store
 Thumbs.db
 
-# === ARCHIVOS DE COMPILACIÓN ===
-*.pyc
-*.pyo
-*.pyd
-*.class
-*.o
-*.obj
-
-# === COMPILADOS FRONTEND (si luego subes React) ===
-node_modules/
-build/
-dist/
+# ========================================
+# MIGRACIONES BACKUP
+# ========================================
+backend/*/migrations_BACKUP*/

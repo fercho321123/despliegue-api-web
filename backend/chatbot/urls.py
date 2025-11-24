@@ -1,13 +1,28 @@
-from django.urls import path
+
+
+# chatbot/urls.py
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+
 from .views import (
-    IniciarConversacionView, EnviarMensajeView, HistorialConversacionView,
-    ConversacionesPorEstudianteView, EvaluarRespuestaManualView
+    ConversationViewSet,
+    SendMessageView,
+    rate_message,
+    student_results,
+    conversation_analytics,
 )
 
+# Router para ViewSets
+router = DefaultRouter()
+router.register(r'conversations', ConversationViewSet, basename='conversation')
+
 urlpatterns = [
-    path('conversacion/iniciar/', IniciarConversacionView.as_view(), name='chat-iniciar'),
-    path('mensaje/', EnviarMensajeView.as_view(), name='chat-mensaje'),
-    path('conversacion/<int:pk>/historial/', HistorialConversacionView.as_view(), name='chat-historial'),
-    path('conversaciones/', ConversacionesPorEstudianteView.as_view(), name='chat-conversaciones'),
-    path('respuesta/evaluar/', EvaluarRespuestaManualView.as_view(), name='chat-evaluar'),
+    # ViewSets (incluye CRUD automático para conversaciones)
+    path('', include(router.urls)),
+    
+    # Endpoints funcionales
+    path('send/', SendMessageView.as_view(), name='send-message'),
+    path('rate/', rate_message, name='rate-message'),
+    path('results/', student_results, name='student-results'),
+    path('analytics/', conversation_analytics, name='conversation-analytics'),
 ]
