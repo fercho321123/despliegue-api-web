@@ -318,6 +318,9 @@ if IS_AWS or not DEBUG:
             'PASSWORD': os.environ.get('RDS_PASSWORD'),
             'HOST': os.environ.get('RDS_HOSTNAME'),
             'PORT': os.environ.get('RDS_PORT', '5432'),
+            'OPTIONS': {
+            'sslmode': 'require', # <--- ¡Asegúrate de que esta línea esté allí!
+        }
         }
     }
     
